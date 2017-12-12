@@ -7,12 +7,21 @@ http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
 
 
 
-	<named-query name='Soorten.inEenLand'>
+	<named-query name='Soorten.inLand'>
 		<query>
-				select s from Soort s
+				select s from Soort s where s.landid=:land
 		</query>
 	</named-query>
-
+	<named-query name='Landen.metNaam'>
+		<query>
+			select l from Land l where l.naam like :landNaam
+		</query>
+	</named-query>
+	<named-query name='Landen.metId'>
+		<query>
+			select l from Land l where l.id=:id
+		</query>
+	</named-query>
 
 
 

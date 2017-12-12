@@ -1,16 +1,18 @@
 package be.vdab.repositories;
 
-import java.util.Set;
+import java.util.List;
 
-import be.vdab.entities.Wijn;
+import be.vdab.entities.Soort;
 
 public class SoortenRepository extends AbstractRepository{
 
 	
-	Set<Wijn> getSoortenPerLand(int landId){
+	public List<Soort> getSoortenPerLand(int landId){
 		
-		getEntityManager().createNamedQuery("Soorten.inEenLand");
-		
+		return
+		getEntityManager().createNamedQuery("Soorten.inLand")
+		.setParameter("land", landId)
+		.getResultList();	
 		
 		
 	}

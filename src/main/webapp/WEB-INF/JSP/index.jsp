@@ -28,5 +28,7 @@
 	</div>
 
 	</header>
+	
+	<p>${land.naam}</p>
 </body>
 </html>
