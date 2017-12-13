@@ -2,8 +2,16 @@ package be.vdab.valueobjects;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Set;
 
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+
+import be.vdab.entities.Wijn;
 
 @Embeddable
 public class Bestelbonlijn implements Serializable{
@@ -15,9 +23,17 @@ public class Bestelbonlijn implements Serializable{
 	private int aantal;
 	private BigDecimal prijs;
 	
-	Bestelbonlijn(){}
-	Bestelbonlijn(int bonid, int wijnid, int aantal){		
-		this.bonid = bonid;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "wijnid", insertable=false, updatable=false)
+	private Wijn wijn;
+	
+	
+	
+	public Bestelbonlijn(){}
+	public Bestelbonlijn(int wijnid, int aantal){		
+		
 		this.wijnid = wijnid;
 		this.aantal = aantal;		
 	}
@@ -49,6 +65,37 @@ public class Bestelbonlijn implements Serializable{
 		if (wijnid != other.wijnid)
 			return false;
 		return true;
+	}
+	public int getBonid() {
+		return bonid;
+	}
+	public int getWijnid() {
+		return wijnid;
+	}
+	public int getAantal() {
+		return aantal;
+	}
+	public BigDecimal getPrijs() {
+		return prijs;
+	}
+	public Wijn getWijn() {
+		System.out.println("tothier");
+		return wijn;
+	}
+	public void setBonid(int bonid) {
+		this.bonid = bonid;
+	}
+	public void setWijnid(int wijnid) {
+		this.wijnid = wijnid;
+	}
+	public void setAantal(int aantal) {
+		this.aantal = aantal;
+	}
+	public void setPrijs(BigDecimal prijs) {
+		this.prijs = prijs;
+	}
+	public void setWijn(Wijn wijn) {
+		this.wijn = wijn;
 	}
 	
 	

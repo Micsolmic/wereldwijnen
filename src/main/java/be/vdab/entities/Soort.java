@@ -4,9 +4,11 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -24,12 +26,13 @@ public class Soort {
 	@Version
 	private int versie;
 	
-	@OneToMany
-	@JoinColumn(name = "soortid")
+	@OneToMany(mappedBy="soort")
 	@OrderBy("jaar")
 	private Set<Wijn> wijnen;
 	
-	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "landid", insertable=false, updatable=false)
+	private Land land;
 	
 	
 	public Soort() {		
@@ -37,7 +40,7 @@ public class Soort {
 	
 	public Soort(String naam, int landid) {
 		
-	
+
 		this.naam = naam;
 		this.landid = landid;
 		this.wijnen = new LinkedHashSet<>();
@@ -73,6 +76,22 @@ public class Soort {
 
 	public void setWijnen(Set<Wijn> wijnen) {
 		this.wijnen = wijnen;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Land getLand() {
+		return land;
+	}
+
+	public void setLand(Land land) {
+		this.land = land;
 	}
 	
 	

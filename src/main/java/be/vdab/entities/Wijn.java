@@ -9,10 +9,12 @@ import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -39,6 +41,19 @@ public class Wijn implements Serializable{
 	private int inBestelling;
 	@Version
 	private int versie;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "soortid", insertable=false, updatable=false)
+	private Soort soort;
+	
+	
+	@ElementCollection 
+	@CollectionTable(name = "bestelbonlijnen",joinColumns = @JoinColumn(name = "wijnid") 
+	) 
+	@OrderBy("prijs")
+	private Set<Bestelbonlijn> bestelbonlijnen;
+	
+	
 	
 	/*
 	@ElementCollection
@@ -73,9 +88,13 @@ public class Wijn implements Serializable{
 	public int getInBestelling() {
 		return inBestelling;
 	}
+	
+	/*
 	public Set<Bestelbonlijn> getBestellijnen() {
 		return bestellijnen;
-	}
+		
+	}	*/
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -94,9 +113,12 @@ public class Wijn implements Serializable{
 	public void setInBestelling(int inBestelling) {
 		this.inBestelling = inBestelling;
 	}
+	/*
 	public void setBestellijnen(Set<Bestelbonlijn> bestellijnen) {
 		this.bestellijnen = bestellijnen;
 	}
+	
+	*/
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -119,6 +141,12 @@ public class Wijn implements Serializable{
 		if (soortid != other.soortid)
 			return false;
 		return true;
+	}
+	public Soort getSoort() {
+		return soort;
+	}
+	public void setSoort(Soort soort) {
+		this.soort = soort;
 	}
 	
 	

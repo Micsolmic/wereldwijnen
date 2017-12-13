@@ -17,6 +17,14 @@ public class SoortenRepository extends AbstractRepository{
 		
 	}
 	
+	public Soort getSoortMetId(int id) {
+		
+		
+		return
+		getEntityManager().find(Soort.class, id);
+		
+	}
+	
 	
 	
 }

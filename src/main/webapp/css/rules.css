@@ -14,3 +14,23 @@ header > * {
 	
 }
 
+a {
+	
+	text-decoration: none;
+	color: inherit;
+}
+
+a:visited{
+	
+	color: #714639;
+	text-transform: uppercase;
+	
+}
+
+table#wijnInfo td{width: 10em;}
+
+.fout{
+	
+	color:red;
+	font-weight: bold;
+}

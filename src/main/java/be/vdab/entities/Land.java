@@ -15,14 +15,13 @@ import javax.persistence.Version;
 public class Land {
 	
 	@Id
-	int id;	
-	String naam;
+	private int id;	
+	private String naam;
 	@Version
-	int versie;
+	private int versie;
 	
 	
-	@OneToMany
-	@JoinColumn(name = "landid")
+	@OneToMany(mappedBy="land")	
 	@OrderBy("naam")
 	private Set<Soort> soorten;
 	
@@ -57,6 +56,14 @@ public class Land {
 
 	public void setVersie(int versie) {
 		this.versie = versie;
+	}
+
+	public Set<Soort> getSoorten() {
+		return soorten;
+	}
+
+	public void setSoorten(Set<Soort> soorten) {
+		this.soorten = soorten;
 	}
 	
 	

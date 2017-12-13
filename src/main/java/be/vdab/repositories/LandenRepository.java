@@ -9,19 +9,20 @@ public class LandenRepository extends AbstractRepository {
 	public List<Land> getLandmetNaam(String naam){
 		
 		 return 
-		 getEntityManager().createNamedQuery("Landen.metNaam")
+		 getEntityManager().createNamedQuery("Landen.metNaam", Land.class)
 		.setParameter("landNaam", naam)
 		.getResultList();
 		
 		
 	}	
 	
-	public List<Land> getLandmetId(int id){
+	public Land getLandmetId(int id){
 		
+		 System.out.println("TOT HIER ************************************************");
 		 return 
-		 getEntityManager().createNamedQuery("Landen.metId")
+		 getEntityManager().createNamedQuery("Landen.metId", Land.class)
 		.setParameter("id", id)
-		.getResultList();
+		.getSingleResult();
 		
 		
 	}	

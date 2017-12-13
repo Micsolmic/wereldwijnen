@@ -22,4 +22,13 @@ public class Bestelbon {
 	String naam;
 	@Embedded
 	Adres adres;
+	
+	public Bestelbon() {}
+	
+	public Bestelbon(String naam, Adres adres) {
+		this.besteld = LocalDateTime.now();
+		this.naam = naam;
+		this.adres = adres;
+		
+	}
 }

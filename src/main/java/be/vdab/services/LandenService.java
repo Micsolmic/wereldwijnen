@@ -11,8 +11,8 @@ public class LandenService extends AbstractService {
 	private final LandenRepository repo = new LandenRepository();
 	
 	
-	List<Land> getLandenMetId(int id){
-		
+	public Land getLandMetId(int id){
+	
 		return repo.getLandmetId(id);
 		
 	}
