@@ -28,8 +28,13 @@ a:visited{
 }
 
 table#wijnInfo td{width: 10em;}
+table#mandjeOverzicht{  border-collapse: collapse;}
+table#mandjeOverzicht td,th{text-align: right; border: 1px solid #714639}
+table#mandjeOverzicht tr:first-child{background-color: #d6b7ad}
 
-.fout{
+#grandTotal{font-weight:bold; letter-spacing: 0.15em; background-color: #afd3b0;}
+
+.invoerfout{
 	
 	color:red;
 	font-weight: bold;

@@ -20,12 +20,11 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import be.vdab.valueobjects.Bestelbonlijn;
 
 
 
-@Table(name = "wijnen")
 @Entity
+@Table(name = "wijnen")
 public class Wijn implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -48,19 +47,19 @@ public class Wijn implements Serializable{
 	
 	
 	@ElementCollection 
-	@CollectionTable(name = "bestelbonlijnen",joinColumns = @JoinColumn(name = "wijnid") 
-	) 
+	@CollectionTable(name = "bestelbonlijnen" /* ,joinColumns = @JoinColumn(name = "wijnid") */	) 
 	@OrderBy("prijs")
-	private Set<Bestelbonlijn> bestelbonlijnen;
+	private Set<Bestelregel> bestelbonlijnen;
 	
 	
 	
-	/*
-	@ElementCollection
-	@CollectionTable(name = "bestelbonlijnen", joinColumns = @JoinColumn(name="wijnid"))
-	private Set<Bestelbonlijn> bestellijnen;
-	*/
+	
+
+	
+	
+	
 	public Wijn() {}	
+	
 	public Wijn(int soortid, int jaar, int beoordeling, BigDecimal prijs, int inBestelling) {
 		
 		this.soortid = soortid;

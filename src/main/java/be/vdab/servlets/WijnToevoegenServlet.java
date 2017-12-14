@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import be.vdab.entities.Bestelregel;
 import be.vdab.entities.Mandje;
 import be.vdab.entities.Wijn;
 import be.vdab.services.WijnService;
-import be.vdab.valueobjects.Bestelbonlijn;
 
 /**
  * Servlet implementation class WijnToevoegenServlet
@@ -44,7 +44,7 @@ public class WijnToevoegenServlet extends HttpServlet {
 			if(aantalInt < 1) {throw new NumberFormatException();}
 			
 			int wijnid = Integer.valueOf(request.getParameter("wijnid"));
-			Bestelbonlijn bblijn = new Bestelbonlijn(wijnid, aantalInt);
+			Bestelregel bblijn = new Bestelregel(aantalInt, wService.getWijnMetId(wijnid));
 			
 			//voeg bestellijn toe aan mandje en bewaar mandje als sessionAttribuut
 			Mandje mandje;

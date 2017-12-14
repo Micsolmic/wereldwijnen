@@ -1,10 +1,10 @@
 package be.vdab.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -12,7 +12,9 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name="landen")
-public class Land {
+public class Land implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private int id;	

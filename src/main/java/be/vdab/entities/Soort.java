@@ -1,5 +1,6 @@
 package be.vdab.entities;
 
+import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,8 +17,10 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name="soorten")
-public class Soort {
+public class Soort implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue	
 	private int id;
